@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 /*
 -[ ] should show username, quote , user photo and logout button
--[ ] should remove token and redirect to verification page when user click logout button
--[ ] should not log out user when user refresh page
 */
 const emit = defineEmits(['LogOut'])
 const LogOut = () =>{

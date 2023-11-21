@@ -27,14 +27,26 @@ const verifyCode = async () => {
     loading.value = false;
   });
 }
-
-const handleInput = (i, event) => {
-  if(event.keyCode === 8){
-    code.value[i] = '';
-    document.getElementById(`id-${i}`).focus();
+const onKeyDown = (i, event) =>{
+  if(event.key === 'Backspace' && i > 0){
+    event.preventDefault();
+    if(code.value[i] === ''){
+      code.value[i-1] = ''
+      document.getElementById(`id-${i}`).focus();
+    }
+    else{
+      code.value[i] = ''
+    }
     return
   }
-  
+}
+const onInput = () =>{
+
+}
+const handleInput = (i, event) => {
+  if(event.key === 'Backspace'){
+    event.preventDefault();
+  }
   code.value[i] = code.value[i].replace(/\D/g, '');
   if (/^\d+$/.test(code.value[i]) && i+2<5) {
     document.getElementById(`id-${i + 2}`).focus();
@@ -69,7 +81,8 @@ onMounted(async () => {
             maxlength="1"
             type="text"
             :id="'id-' + i"
-            v-on:keyup="handleInput(i-1, $event)"
+            @keydown="onKeyDown( i-1 , $event)"
+            @input="handleInput(i-1, $event)"
           />
         </div>
       </div>

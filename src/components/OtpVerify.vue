@@ -17,7 +17,6 @@ const verifyCode = async () => {
   })
   .then(function(response){
     if(response.data.valid === true){
-      console.log("token: " + response.data.token)
       localStorage.setItem("LoginStatus", JSON.stringify(response.data.token))
       emit("verifyStatus")
     }
@@ -40,9 +39,7 @@ const onKeyDown = (i, event) =>{
     return
   }
 }
-const onInput = () =>{
 
-}
 const handleInput = (i, event) => {
   if(event.key === 'Backspace'){
     event.preventDefault();

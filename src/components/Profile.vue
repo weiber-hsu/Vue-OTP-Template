@@ -25,7 +25,7 @@ const LogOut = () =>{
       </figcaption>
     </div>
   </figure>
-  <button @click="LogOut">test</button>
+  <button @click="LogOut">Log Out</button>
 </template>
 
 <style scoped>
